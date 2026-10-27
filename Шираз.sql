@@ -2,12 +2,12 @@
 -- PostgreSQL database dump
 --
 
-\restrict OwDwf6ESRN9E6cssHRVFN5NbxriIExF2BLZjDGtDGtpIUeoLofewZjQypOx0DFv
+\restrict yZp98Fw8dZRNbGdVy2ZjSdYIgicwzNwQwmyrapnWAJCeefexP9p1K7X4ie3cSOG
 
 -- Dumped from database version 18.6
 -- Dumped by pg_dump version 18.6
 
--- Started on 2026-10-20 12:45:04
+-- Started on 2026-10-27 12:52:42
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -26,7 +26,7 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- TOC entry 226 (class 1259 OID 41636)
+-- TOC entry 226 (class 1259 OID 25772)
 -- Name: disciplines; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -41,7 +41,7 @@ CREATE TABLE public.disciplines (
 ALTER TABLE public.disciplines OWNER TO postgres;
 
 --
--- TOC entry 225 (class 1259 OID 41635)
+-- TOC entry 225 (class 1259 OID 25771)
 -- Name: disciplines_discipline_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -66,7 +66,7 @@ ALTER SEQUENCE public.disciplines_discipline_id_seq OWNED BY public.disciplines.
 
 
 --
--- TOC entry 230 (class 1259 OID 41677)
+-- TOC entry 230 (class 1259 OID 25813)
 -- Name: grades; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -83,7 +83,7 @@ CREATE TABLE public.grades (
 ALTER TABLE public.grades OWNER TO postgres;
 
 --
--- TOC entry 229 (class 1259 OID 41676)
+-- TOC entry 229 (class 1259 OID 25812)
 -- Name: grades_grade_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -108,13 +108,13 @@ ALTER SEQUENCE public.grades_grade_id_seq OWNED BY public.grades.grade_id;
 
 
 --
--- TOC entry 220 (class 1259 OID 41595)
+-- TOC entry 220 (class 1259 OID 25731)
 -- Name: groups; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.groups (
     group_id integer NOT NULL,
-    group_name character varying(20) NOT NULL,
+    group_name character varying(20) CONSTRAINT groups_groupe_name_not_null NOT NULL,
     specialty character varying(100) NOT NULL,
     admission_year integer NOT NULL
 );
@@ -123,7 +123,7 @@ CREATE TABLE public.groups (
 ALTER TABLE public.groups OWNER TO postgres;
 
 --
--- TOC entry 219 (class 1259 OID 41594)
+-- TOC entry 219 (class 1259 OID 25730)
 -- Name: groups_group_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -148,7 +148,7 @@ ALTER SEQUENCE public.groups_group_id_seq OWNED BY public.groups.group_id;
 
 
 --
--- TOC entry 228 (class 1259 OID 41649)
+-- TOC entry 228 (class 1259 OID 25785)
 -- Name: lessons; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -165,7 +165,7 @@ CREATE TABLE public.lessons (
 ALTER TABLE public.lessons OWNER TO postgres;
 
 --
--- TOC entry 227 (class 1259 OID 41648)
+-- TOC entry 227 (class 1259 OID 25784)
 -- Name: lessons_lesson_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -190,7 +190,7 @@ ALTER SEQUENCE public.lessons_lesson_id_seq OWNED BY public.lessons.lesson_id;
 
 
 --
--- TOC entry 222 (class 1259 OID 41608)
+-- TOC entry 222 (class 1259 OID 25744)
 -- Name: students; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -207,7 +207,7 @@ CREATE TABLE public.students (
 ALTER TABLE public.students OWNER TO postgres;
 
 --
--- TOC entry 221 (class 1259 OID 41607)
+-- TOC entry 221 (class 1259 OID 25743)
 -- Name: students_student_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -232,7 +232,7 @@ ALTER SEQUENCE public.students_student_id_seq OWNED BY public.students.student_i
 
 
 --
--- TOC entry 224 (class 1259 OID 41625)
+-- TOC entry 224 (class 1259 OID 25761)
 -- Name: teachers; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -247,7 +247,7 @@ CREATE TABLE public.teachers (
 ALTER TABLE public.teachers OWNER TO postgres;
 
 --
--- TOC entry 223 (class 1259 OID 41624)
+-- TOC entry 223 (class 1259 OID 25760)
 -- Name: teachers_teacher_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -272,7 +272,7 @@ ALTER SEQUENCE public.teachers_teacher_id_seq OWNED BY public.teachers.teacher_i
 
 
 --
--- TOC entry 4753 (class 2604 OID 41639)
+-- TOC entry 4753 (class 2604 OID 25775)
 -- Name: disciplines discipline_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -280,7 +280,7 @@ ALTER TABLE ONLY public.disciplines ALTER COLUMN discipline_id SET DEFAULT nextv
 
 
 --
--- TOC entry 4755 (class 2604 OID 41680)
+-- TOC entry 4755 (class 2604 OID 25816)
 -- Name: grades grade_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -288,7 +288,7 @@ ALTER TABLE ONLY public.grades ALTER COLUMN grade_id SET DEFAULT nextval('public
 
 
 --
--- TOC entry 4750 (class 2604 OID 41598)
+-- TOC entry 4750 (class 2604 OID 25734)
 -- Name: groups group_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -296,7 +296,7 @@ ALTER TABLE ONLY public.groups ALTER COLUMN group_id SET DEFAULT nextval('public
 
 
 --
--- TOC entry 4754 (class 2604 OID 41652)
+-- TOC entry 4754 (class 2604 OID 25788)
 -- Name: lessons lesson_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -304,7 +304,7 @@ ALTER TABLE ONLY public.lessons ALTER COLUMN lesson_id SET DEFAULT nextval('publ
 
 
 --
--- TOC entry 4751 (class 2604 OID 41611)
+-- TOC entry 4751 (class 2604 OID 25747)
 -- Name: students student_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -312,7 +312,7 @@ ALTER TABLE ONLY public.students ALTER COLUMN student_id SET DEFAULT nextval('pu
 
 
 --
--- TOC entry 4752 (class 2604 OID 41628)
+-- TOC entry 4752 (class 2604 OID 25764)
 -- Name: teachers teacher_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -320,7 +320,7 @@ ALTER TABLE ONLY public.teachers ALTER COLUMN teacher_id SET DEFAULT nextval('pu
 
 
 --
--- TOC entry 4934 (class 0 OID 41636)
+-- TOC entry 4934 (class 0 OID 25772)
 -- Dependencies: 226
 -- Data for Name: disciplines; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -334,7 +334,7 @@ COPY public.disciplines (discipline_id, discipline_name, hours) FROM stdin;
 
 
 --
--- TOC entry 4938 (class 0 OID 41677)
+-- TOC entry 4938 (class 0 OID 25813)
 -- Dependencies: 230
 -- Data for Name: grades; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -354,50 +354,51 @@ COPY public.grades (grade_id, student_id, discipline_id, grade, grade_date) FROM
 
 
 --
--- TOC entry 4928 (class 0 OID 41595)
+-- TOC entry 4928 (class 0 OID 25731)
 -- Dependencies: 220
 -- Data for Name: groups; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.groups (group_id, group_name, specialty, admission_year) FROM stdin;
-1	П-21	Программирование	2026
-2	ИС-22	Информационные системы	2026
+2	BC-22	Информационные системы	2026
 3	ЭК-21	Экономика	2026
+1	П-21	Программирование	2026
+5	ИС-23	Информационные системы	2026
 \.
 
 
 --
--- TOC entry 4936 (class 0 OID 41649)
+-- TOC entry 4936 (class 0 OID 25785)
 -- Dependencies: 228
 -- Data for Name: lessons; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.lessons (lesson_id, group_id, discipline_id, teacher_id, lesson_date, lesson_type) FROM stdin;
-1	1	1	1	2026-09-10	Лекция
-2	1	3	3	2026-09-11	Практика
-3	2	1	1	2026-09-16	Практика
-4	2	2	2	2026-09-12	Лекция
-5	3	2	2	2026-09-13	Практика
+3	2	2	2	2026-10-22	Лекция
+4	2	4	1	2026-10-23	Практика
+5	3	1	3	2026-10-24	Лекция
+1	1	1	1	2026-10-20	Лекция
+2	1	3	3	2026-10-21	Практика
 \.
 
 
 --
--- TOC entry 4930 (class 0 OID 41608)
+-- TOC entry 4930 (class 0 OID 25744)
 -- Dependencies: 222
 -- Data for Name: students; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.students (student_id, last_name, first_name, middle_name, birth_date, group_id) FROM stdin;
-1	Иванов	Иван	Иванович	2007-03-15	1
-2	Петров	Алексей	Сергеевич	2007-07-21	1
 3	Сидорова	Анна	Игоревна	2006-11-04	2
 4	Кузнецов	Максим	Олегович	2007-01-18	2
 5	Смирнова	Елена	Андреевна	2006-09-27	3
+1	Иванов	Иван	Иванович	2007-03-15	1
+2	Петров	Алексей	Сергеевич	2007-07-21	1
 \.
 
 
 --
--- TOC entry 4932 (class 0 OID 41625)
+-- TOC entry 4932 (class 0 OID 25761)
 -- Dependencies: 224
 -- Data for Name: teachers; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -433,7 +434,7 @@ SELECT pg_catalog.setval('public.grades_grade_id_seq', 10, true);
 -- Name: groups_group_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.groups_group_id_seq', 3, true);
+SELECT pg_catalog.setval('public.groups_group_id_seq', 5, true);
 
 
 --
@@ -451,7 +452,7 @@ SELECT pg_catalog.setval('public.lessons_lesson_id_seq', 5, true);
 -- Name: students_student_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.students_student_id_seq', 5, true);
+SELECT pg_catalog.setval('public.students_student_id_seq', 7, true);
 
 
 --
@@ -464,7 +465,7 @@ SELECT pg_catalog.setval('public.teachers_teacher_id_seq', 3, true);
 
 
 --
--- TOC entry 4767 (class 2606 OID 41647)
+-- TOC entry 4767 (class 2606 OID 25783)
 -- Name: disciplines disciplines_discipline_name_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -473,7 +474,7 @@ ALTER TABLE ONLY public.disciplines
 
 
 --
--- TOC entry 4769 (class 2606 OID 41645)
+-- TOC entry 4769 (class 2606 OID 25781)
 -- Name: disciplines disciplines_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -482,7 +483,7 @@ ALTER TABLE ONLY public.disciplines
 
 
 --
--- TOC entry 4773 (class 2606 OID 41688)
+-- TOC entry 4773 (class 2606 OID 25824)
 -- Name: grades grades_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -491,16 +492,16 @@ ALTER TABLE ONLY public.grades
 
 
 --
--- TOC entry 4759 (class 2606 OID 41606)
--- Name: groups groups_group_name_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 4759 (class 2606 OID 25742)
+-- Name: groups groups_groupe_name_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.groups
-    ADD CONSTRAINT groups_group_name_key UNIQUE (group_name);
+    ADD CONSTRAINT groups_groupe_name_key UNIQUE (group_name);
 
 
 --
--- TOC entry 4761 (class 2606 OID 41604)
+-- TOC entry 4761 (class 2606 OID 25740)
 -- Name: groups groups_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -509,7 +510,7 @@ ALTER TABLE ONLY public.groups
 
 
 --
--- TOC entry 4771 (class 2606 OID 41660)
+-- TOC entry 4771 (class 2606 OID 25796)
 -- Name: lessons lessons_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -518,7 +519,7 @@ ALTER TABLE ONLY public.lessons
 
 
 --
--- TOC entry 4763 (class 2606 OID 41618)
+-- TOC entry 4763 (class 2606 OID 25754)
 -- Name: students students_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -527,7 +528,7 @@ ALTER TABLE ONLY public.students
 
 
 --
--- TOC entry 4765 (class 2606 OID 41634)
+-- TOC entry 4765 (class 2606 OID 25770)
 -- Name: teachers teachers_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -536,7 +537,7 @@ ALTER TABLE ONLY public.teachers
 
 
 --
--- TOC entry 4774 (class 2606 OID 41619)
+-- TOC entry 4774 (class 2606 OID 25755)
 -- Name: students fk_students_groups; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -545,7 +546,7 @@ ALTER TABLE ONLY public.students
 
 
 --
--- TOC entry 4778 (class 2606 OID 41694)
+-- TOC entry 4778 (class 2606 OID 25830)
 -- Name: grades grades_discipline_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -554,7 +555,7 @@ ALTER TABLE ONLY public.grades
 
 
 --
--- TOC entry 4779 (class 2606 OID 41689)
+-- TOC entry 4779 (class 2606 OID 25825)
 -- Name: grades grades_student_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -563,7 +564,7 @@ ALTER TABLE ONLY public.grades
 
 
 --
--- TOC entry 4775 (class 2606 OID 41666)
+-- TOC entry 4775 (class 2606 OID 25802)
 -- Name: lessons lessons_discipline_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -572,7 +573,7 @@ ALTER TABLE ONLY public.lessons
 
 
 --
--- TOC entry 4776 (class 2606 OID 41661)
+-- TOC entry 4776 (class 2606 OID 25797)
 -- Name: lessons lessons_group_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -581,7 +582,7 @@ ALTER TABLE ONLY public.lessons
 
 
 --
--- TOC entry 4777 (class 2606 OID 41671)
+-- TOC entry 4777 (class 2606 OID 25807)
 -- Name: lessons lessons_teacher_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -589,11 +590,11 @@ ALTER TABLE ONLY public.lessons
     ADD CONSTRAINT lessons_teacher_id_fkey FOREIGN KEY (teacher_id) REFERENCES public.teachers(teacher_id) ON UPDATE CASCADE ON DELETE RESTRICT;
 
 
--- Completed on 2026-10-20 12:45:04
+-- Completed on 2026-10-27 12:52:42
 
 --
 -- PostgreSQL database dump complete
 --
 
-\unrestrict OwDwf6ESRN9E6cssHRVFN5NbxriIExF2BLZjDGtDGtpIUeoLofewZjQypOx0DFv
+\unrestrict yZp98Fw8dZRNbGdVy2ZjSdYIgicwzNwQwmyrapnWAJCeefexP9p1K7X4ie3cSOG
 
